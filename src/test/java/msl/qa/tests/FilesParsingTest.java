@@ -82,11 +82,15 @@ public class FilesParsingTest {
 
   @Test
   void zipFileParsingTest() throws IOException {
-    try (InputStream is = cl.getResourceAsStream("zip/sample.zip");
-         ZipInputStream zis = new ZipInputStream(is)) {
-      ZipEntry entry;
-      while ((entry = zis.getNextEntry()) != null){
-        System.out.println(entry.getName());
+    try (InputStream is = cl.getResourceAsStream("zip/sample.zip")) {
+      if (is == null) {
+        throw new IllegalArgumentException("### File zip/sample.zip not found in classpath");
+      }
+      try (ZipInputStream zis = new ZipInputStream(is)) {
+        ZipEntry entry;
+        while ((entry = zis.getNextEntry()) != null) {
+          System.out.println(entry.getName());
+        }
       }
     }
   }
