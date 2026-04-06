@@ -5,7 +5,6 @@ import com.codeborne.xlstest.XLS;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import msl.qa.model.Glossary;
-import msl.qa.model.GlossaryInner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
