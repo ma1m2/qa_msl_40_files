@@ -5,7 +5,6 @@ import com.codeborne.xlstest.XLS;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import msl.qa.model.Glossary;
-import msl.qa.model.GlossaryInner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -82,11 +81,15 @@ public class FilesParsingTest {
 
   @Test
   void zipFileParsingTest() throws IOException {
-    try (InputStream is = cl.getResourceAsStream("zip/sample.zip");
-         ZipInputStream zis = new ZipInputStream(is)) {
-      ZipEntry entry;
-      while ((entry = zis.getNextEntry()) != null){
-        System.out.println(entry.getName());
+    try (InputStream is = cl.getResourceAsStream("zip/sample.zip")) {
+      if (is == null) {
+        throw new IllegalArgumentException("### File zip/sample.zip not found in classpath");
+      }
+      try (ZipInputStream zis = new ZipInputStream(is)) {
+        ZipEntry entry;
+        while ((entry = zis.getNextEntry()) != null) {
+          System.out.println(entry.getName());
+        }
       }
     }
   }

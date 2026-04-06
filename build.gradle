@@ -19,8 +19,17 @@ dependencies {
     testImplementation 'com.codeborne:xls-test:1.4.3'
     testImplementation 'com.opencsv:opencsv:5.9'
     testImplementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-core:2.21.2'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
 }

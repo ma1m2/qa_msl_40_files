@@ -29,7 +29,7 @@ public class SelenideFilesTest {
   }
 
   @Test
-  void uploadFileTest() throws IOException {
+  void uploadFileTest() {
     open("https://the-internet.herokuapp.com/upload");
     $("#file-upload").uploadFromClasspath("img/1.png");//"input[type='file']"
     $("#file-submit").click();
